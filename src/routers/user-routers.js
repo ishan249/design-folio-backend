@@ -20,8 +20,7 @@ const smtpProtocol = nodemailer.createTransport({
   }
 })
 router.post("/user/create", upload.single("myFile"),async (req, res) => {
-  const database = client.db("DesignFolio");
-  const collection = database.collection("users");
+ 
   const {
     name,
     email,
@@ -60,7 +59,7 @@ router.post("/user/create", upload.single("myFile"),async (req, res) => {
       res.status(201).json({message: "new user with image created" });
     }
   } catch (e) {
-    res.send(e);
+    res.send("can't add user");
   }
 });
 
