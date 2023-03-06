@@ -6,7 +6,7 @@ Design Folio is a portfolio builder website which can help you create your landi
 You can checkout this project live [here](designfolio.onrender.com)
 ## Design Folio Frontend
 
-This repositary only contains code of backend part of the website. Here is link to backend code repository [design-folio-frontend](https://github.com/ishan249/design-folio-frontend).
+This repositary only contains code of backend part of the website. Here is link to frontend code repository [design-folio-frontend](https://github.com/ishan249/design-folio-frontend).
 
 ## Installation
 
