@@ -9,6 +9,8 @@ require("dotenv").config();
 const client = new MongoClient(process.env.PORTFOLIO_DBURL);
 client.connect();
 
+// creating smtpProtocol to send mail for verification
+
 const smtpProtocol = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -19,6 +21,9 @@ const smtpProtocol = nodemailer.createTransport({
       rejectUnauthorized: false
   }
 })
+
+// This is the api which will insert all data and photo of user in database
+
 router.post("/user/create", upload.single("myFile"),async (req, res) => {
  
   const {
@@ -63,6 +68,8 @@ router.post("/user/create", upload.single("myFile"),async (req, res) => {
   }
 });
 
+// This api is used to load user portfolio
+
 router.get("/user/data", async (req,res)=>{
   const {urlMail} = req.query;
   const user = await User.findOne({email:urlMail});
@@ -71,6 +78,7 @@ router.get("/user/data", async (req,res)=>{
   res.status(201).json([{user,file}]);
 });
 
+// This api will verify email by sending otp
 
 router.post("/email/validate",async (req,res)=>{
   const {email} = req.query;
@@ -98,6 +106,8 @@ router.post("/email/validate",async (req,res)=>{
   }
 });
 
+
+// Api to check whether user is already present or not.
 
 router.post("/find/user", async (req,res)=>{
   const {email} = req.query;

@@ -1,6 +1,9 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
+// Connecting mongodb database
+
+
 function connectDB() {
   mongoose.connect(process.env.PORTFOLIO_DBURL, { useNewUrlParser: true, useUnifiedTopology: true });
   const connection = mongoose.connection;

@@ -1,5 +1,7 @@
 const multer = require("multer");
 
+//Creating storage in uploads folder where photos will be uploaded and assigning file name
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./src/uploads/");
