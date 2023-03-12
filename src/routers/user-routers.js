@@ -25,7 +25,7 @@ const smtpProtocol = nodemailer.createTransport({
 // This is the api which will insert all data and photo of user in database
 
 router.post("/user/create", upload.single("myFile"),async (req, res) => {
- 
+  
   const {
     name,
     email,
@@ -37,7 +37,9 @@ router.post("/user/create", upload.single("myFile"),async (req, res) => {
     skill,
     projects,
   } = req.body;
+  const username = email.split("@")[0];
   const user = new User({
+    username,
     name,
     email,
     role,
@@ -72,7 +74,7 @@ router.post("/user/create", upload.single("myFile"),async (req, res) => {
 
 router.get("/user/data", async (req,res)=>{
   const {urlMail} = req.query;
-  const user = await User.findOne({email:urlMail});
+  const user = await User.findOne({username:urlMail});
   const userId = user._id;
   const file = await File.findOne({user:userId});
   res.status(201).json([{user,file}]);

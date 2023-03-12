@@ -13,6 +13,7 @@ const fileSchema = new mongoose.Schema({
 
 
 const userSchema = new mongoose.Schema({
+  username: String,
   name: String,
   email: String,
   role: String,
